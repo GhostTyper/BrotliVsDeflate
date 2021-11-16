@@ -34,6 +34,18 @@ Those are the numbers for 1 GBit. Here we see that deflate `Optimal` is never a 
 
 Sadly, we find no "perfect" choice for all scenarios. And despite all those line speeds we also need to consider memory and cpu consumption. For instance, when we have clients which are only connected via 2 MBit or our application requires only 2 MBit compressed bandwith. Than we may use something with Brotli compression quality of 10 or 11. However this will lead to one core being utilized by 100%. So, if we have more clients than cores the performance would also degrade.
 
+# Performance enhancements in .NET 5.
+
+With .NET 5 the brotli compressor has been enhanced a little more. The compression rate is now better than before:
+
+![Brotli compression size with .NET 5 compared to deflate optimal.](./readme/5-deflate.png)
+
+Also the speed has been increased in relation to deflate with .NET 5:
+
+![Brotli compression speed with .NET 5.](./readme/5-mbits.png)
+
+# Conslusion.
+
 The Brotli implementation has *many* advantages over the deflate implementation in .NET:
 
 * Brotli supports way more options than the `DeflateStream` in .NET.
